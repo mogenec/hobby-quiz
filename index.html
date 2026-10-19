@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Hobby Matchmaker Quiz | Sick but learning to LIVE</title>
+  <meta name="description" content="A 2-minute quiz for people with chronic illness. Find your hobby type and get 5 hobbies matched to your energy, your budget and your actual life.">
+  <meta property="og:title" content="Which side quester are you? The Hobby Matchmaker Quiz">
+  <meta property="og:description" content="A 2-minute quiz for chronically ill people. Find your hobby type and 5 hobbies that fit your energy.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="quiz.css?v=1">
+</head>
+<body>
+<main class="app" id="app" aria-live="polite">
+
+  <!-- START -->
+  <section class="screen" id="s-start">
+    <p class="kicker">2-minute quiz · for chronically ill side questers</p>
+    <h1>The Hobby Matchmaker Quiz</h1>
+    <p class="lede">Find a hobby that fits your energy, your budget and your actual life. Ten quick questions, four hobby types, and five matched hobbies for yours.</p>
+    <div class="types">
+      <span style="--c:#C8411B"><b>A</b>The Maker</span>
+      <span style="--c:#1F7A6D"><b>B</b>The Explorer</span>
+      <span style="--c:#6B4C8A"><b>C</b>The Cozy One</span>
+      <span style="--c:#B38A00"><b>D</b>The Social Side Quester</span>
+    </div>
+    <button class="btn" id="startBtn" type="button">Start the quiz</button>
+    <p class="fine">No wrong answers. Go with your gut, not with who you used to be.</p>
+    <p class="by">by Mo · Sick but learning to LIVE</p>
+  </section>
+
+  <!-- QUESTION -->
+  <section class="screen" id="s-q" hidden>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+    <p class="count" id="qCount"></p>
+    <h2 id="qText" tabindex="-1"></h2>
+    <div class="opts" id="qOpts"></div>
+    <button class="back" id="backBtn" type="button">← Back</button>
+  </section>
+
+  <!-- EMAIL GATE -->
+  <section class="screen" id="s-gate" hidden>
+    <p class="kicker">Your result is ready ✨</p>
+    <h2 tabindex="-1" id="gateTitle">Where should I send your hobby guide?</h2>
+    <p class="lede">You'll see your hobby type right away, and I'll email you the full printable guide: all four types, 20 hobbies, and a free way to try each one.</p>
+    <form id="gateForm" class="form" novalidate>
+      <label for="fn">First name</label>
+      <input id="fn" name="first_name" autocomplete="given-name" required>
+      <label for="em">Email</label>
+      <input id="em" name="email" type="email" autocomplete="email" required>
+      <input class="hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn" type="submit" id="gateBtn">Show my hobby type</button>
+      <div class="form-error" id="gateErr" role="alert"></div>
+      <p class="fine">You'll also get my weekly-ish emails about low-energy side quests. Unsubscribe anytime.</p>
+    </form>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="s-result" hidden>
+    <div class="hero" id="rHero">
+      <p class="you">You are</p>
+      <h2 id="rName" tabindex="-1"></h2>
+      <p class="tag" id="rTag"></p>
+      <span class="badge" id="rBadge"></span>
+    </div>
+    <p class="also" id="rAlso" hidden></p>
+    <div id="rAbout"></div>
+    <div class="sw">
+      <div><b>Your superpower</b><span id="rStrength"></span></div>
+      <div><b>Watch out for</b><span id="rWatch"></span></div>
+    </div>
+    <h3>Your 5 matched hobbies</h3>
+    <p class="fine left">Try one this week. Do the free version first. Quitting is data, not failure.</p>
+    <div id="rHobbies" class="hobbies"></div>
+    <div class="next" id="rNext" hidden>
+      <p class="k">When you're ready for more</p>
+      <h3 id="rNextName"></h3>
+      <p id="rNextDesc"></p>
+      <a class="btn small" id="rNextLink" href="#">Take a look</a>
+    </div>
+    <div class="share">
+      <h3>Tell me your type!</h3>
+      <p>Screenshot this and tag <b>@mo.christensen</b> on Instagram. I want to know how many Makers are out there.</p>
+      <div class="sharebtns">
+        <a class="btn ghost" href="https://www.instagram.com/mo.christensen/" target="_blank" rel="noopener">Follow on Instagram</a>
+        <button class="btn ghost" id="copyBtn" type="button">Copy the quiz link</button>
+      </div>
+      <button class="link" id="retakeBtn" type="button">Take it again</button>
+    </div>
+    <p class="fine">Hobbies are for fun, not medical advice. You know your body best.</p>
+  </section>
+
+</main>
+<script src="data.js?v=1"></script>
+<script src="quiz.js?v=1"></script>
+</body>
+</html>
