@@ -1,7 +1,7 @@
 // Paste the Inbound Webhook URL from the GoHighLevel "Hobby Quiz" workflow trigger here.
 // Looks like: https://services.leadconnectorhq.com/hooks/XXXX/webhook-trigger/YYYY
 // Leave it empty and the quiz still works; sign-ups just aren't sent anywhere.
-const GHL_WEBHOOK_URL = "";
+const GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/4QsLYjGwLmkwPq9qWOs2/webhook-trigger/420a7946-1828-45df-af4f-4213a6e46eee";
 
 // Paid product links per hobby type. Leave "" to hide the "When you're ready for more" box.
 const PRODUCT_LINKS = { A: "", B: "", C: "", D: "" };
@@ -125,6 +125,7 @@ $("gateForm").addEventListener("submit", async (e) => {
     email,
     source: "Hobby Matchmaker Quiz",
     tags: `hobby-quiz, hobby-type-${t.key}`,
+    type_tag: `hobby-type-${t.key}`,
     hobby_type: t.name,
     hobby_type_second: res.second ? Q.types[res.second].name : "",
     score_maker: res.counts.A, score_explorer: res.counts.B, score_cozy: res.counts.C, score_social: res.counts.D,
